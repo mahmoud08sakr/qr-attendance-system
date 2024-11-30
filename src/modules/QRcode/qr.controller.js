@@ -7,13 +7,13 @@ import jwt from "jsonwebtoken";
 
 export const generateQR = async (req, res) => {
     try {
-        const { track } = req.query;
+        const { courseId } = req.params;
         const course = await CourseModel.findOne({ name: track });
         if (!course) {
             return res.status(400).json({ error: "Track not found" });
         }
         const payload = {
-            track: req.query.track,
+            track: req.query.courseId,
             timestamp: Date.now(),
         };
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: "5s" });
@@ -30,7 +30,7 @@ export const validateQR =  async (req, res) => {
     const { token, studentId } = req.body;
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        const student = await StudentModel.findOne({ studentId, course: decoded.track });
+        const student = await StudentModel.findOne({ studentId, courseId: decoded.courseId });
         if (!student) {
             return res.status(400).json({ error: "Student not enrolled in this course" });
         }

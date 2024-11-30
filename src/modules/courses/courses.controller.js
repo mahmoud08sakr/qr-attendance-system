@@ -25,3 +25,34 @@ export const getCourseByID = async (req, res) => {
         res.status(404).json({ error: "Course not found" });
     }
 }
+
+export const getAllStudentCourse = async (req, res) => {
+
+    const { courseId } = req.params;
+    let data = await CourseModel.findById(courseId).populate('studentId');
+    if (data) {
+        res.json({ data });
+    } else {
+        res.status(404).json({ error: "Course not found" });
+    }
+}
+
+export const addStudentToCourse = async (req, res) => {
+    const { courseId } = req.params;
+    console.log(courseId);
+    
+    const { studentId } = req.body;
+    try {
+        const course = await CourseModel.findById(courseId);
+        console.log(course);
+
+        if (!course) {
+            return res.status(404).json({ error: "Course not found" });
+        }
+        course.studentId.push(studentId);
+        await course.save();
+        res.status(200).json({ message: "Student added to course successfully" });
+    } catch (error) {
+        res.status(500).json({ error: "Failed to add student to course" });
+    }
+}

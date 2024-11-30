@@ -6,6 +6,5 @@ const router = Router();
 
 
 router.get("/generate-qr", handelError(generateQR));
-
-router.post("/validate-qr", handelError(validateQR));
+router.post("/validate-qr/:courseId", handelError(validateQR));
 export default router
