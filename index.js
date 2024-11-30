@@ -4,6 +4,7 @@ import cors from "cors";
 import connectDB from "./database/connection.js";
 import courseRouter from "./src/modules/courses/course.router.js";
 import studentsRouter from "./src/modules/students/students.router.js";
+import accountRouter from "./src/modules/accounts/account.router.js";
 import qrRouter from "./src/modules/QRcode/qr.router.js";
 config();
 connectDB();
@@ -13,6 +14,7 @@ app.use(json());
 app.use("/api/v1/courses", courseRouter);
 app.use("/api/v1/students", studentsRouter);
 app.use("/api/v1/qr", qrRouter);
+app.use("/api/v1/accounts", accountRouter);
 
 
 

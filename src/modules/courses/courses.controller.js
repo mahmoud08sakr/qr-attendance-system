@@ -10,3 +10,18 @@ export const addCourse = async (req, res) => {
         res.status(500).json({ error: "Failed to add course" });
     }
 }
+
+export const getAllCourses = async (req, res) => {
+    let data = await CourseModel.find({});
+    res.json({ data });
+}
+
+export const getCourseByID = async (req, res) => {
+    const { id } = req.params;
+    let data = await CourseModel.findById(id);
+    if (data) {
+        res.json({ data });
+    } else {
+        res.status(404).json({ error: "Course not found" });
+    }
+}
