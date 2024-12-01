@@ -15,9 +15,5 @@ app.use("/api/v1/courses", courseRouter);
 app.use("/api/v1/students", studentsRouter);
 app.use("/api/v1/qr", qrRouter);
 app.use("/api/v1/accounts", accountRouter);
-
-
-
-
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

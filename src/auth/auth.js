@@ -1,6 +1,4 @@
 import jwt from "jsonwebtoken";
-
-
 function auth(req, res, next) {
     const { token } = req.headers;
     if (token) {
@@ -12,7 +10,6 @@ function auth(req, res, next) {
                 next();
             }
         });
-
     } else {
         res.status(401).json({ error: "Unauthorized" });
     }

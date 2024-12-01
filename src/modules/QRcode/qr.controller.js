@@ -3,8 +3,6 @@ import AttendanceModel from "../../../database/model/attendence.model.js";
 import CourseModel from "../../../database/model/course.model.js";
 import StudentModel from '../../../database/model/student.model.js';
 import jwt from "jsonwebtoken";
-
-
 export const generateQR = async (req, res) => {
     try {
         const { courseId } = req.params;
@@ -24,8 +22,6 @@ export const generateQR = async (req, res) => {
         res.status(500).json({ error: "Failed to generate QR code" });
     }
 }
-
-
 export const validateQR =  async (req, res) => {
     const { token, studentId } = req.body;
     try {

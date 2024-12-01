@@ -10,7 +10,6 @@ export const signUp = async (req, res) => {
     })
     res.json({ message: "account added", addedAccount })
 }
-
 export const signIn = async (req, res) => {
     const { email, password } = req.body;
     let account = await accountModel.findOne({ email });

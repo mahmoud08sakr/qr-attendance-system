@@ -7,7 +7,5 @@ const handelError = (fn) => {
             next(error);
         }
     }
-
 };
-
 export default handelError

@@ -1,6 +1,5 @@
 import CourseModel from "../../../database/model/course.model.js";
 import StudentModel from "../../../database/model/student.model.js";
-
 export const addStudent = async (req, res) => {
     const { name, courseId } = req.body;
     try {
