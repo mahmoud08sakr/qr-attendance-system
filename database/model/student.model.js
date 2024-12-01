@@ -6,6 +6,8 @@ const StudentSchema = new Schema({
         ref: "Course",
         required: true
     }],
+    phone: { type: String, required: true },
+    email: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
 });
 const StudentModel = model("Student", StudentSchema);
